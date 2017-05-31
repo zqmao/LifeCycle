@@ -33,6 +33,26 @@
             android:name=".TransparentActivity"
             android:theme="@android:style/Theme.Translucent"
             />
+        <activity
+            android:name=".LaunchTestActivity"
+            android:launchMode="standard"
+            />
+        <activity
+            android:name=".LaunchTestA"
+            android:launchMode="standard"
+            />
+        <activity
+            android:name=".LaunchTestB"
+            android:launchMode="singleTop"
+            />
+        <activity
+            android:name=".LaunchTestC"
+            android:launchMode="singleTask"
+            />
+        <activity
+            android:name=".LaunchTestD"
+            android:launchMode="singleInstance"
+            />
     </application>
 
 </manifest>

@@ -27,10 +27,17 @@ public class MainActivity extends AppCompatActivity {
                 openActivity(LifeCycleActivity.class);
             }
         });
+        findViewById(R.id.tv3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(LaunchTestActivity.class);
+            }
+        });
     }
     
     private void openActivity(Class clazz){
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
+        intent.setClassName("packageName", "className");
     }
 }
