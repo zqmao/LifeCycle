@@ -36,6 +36,8 @@
         <activity
             android:name=".LaunchTestActivity"
             android:launchMode="standard"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|keyboardHidden"
             />
         <activity
             android:name=".LaunchTestA"
@@ -52,6 +54,26 @@
         <activity
             android:name=".LaunchTestD"
             android:launchMode="singleInstance"
+            />
+
+        <activity
+            android:name=".AdjustPanTestA"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".AdjustPanTestB"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".AdjustResizeTestA"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity
+            android:name=".AdjustResizeTestB"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity 
+            android:name=".AdjustTestActivity"
             />
     </application>
 

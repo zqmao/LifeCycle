@@ -10,10 +10,12 @@ import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 /**
  * Created by Administrator on 2017/5/27.
@@ -21,6 +23,8 @@ import android.view.View;
 
 public class NormalActivity extends Activity implements View.OnClickListener{
     private final String TAG = "LifeCycle";
+    
+    private EditText et;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +39,18 @@ public class NormalActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.f).setOnClickListener(this);
         findViewById(R.id.g).setOnClickListener(this);
         findViewById(R.id.h).setOnClickListener(this);
+        et = (EditText)findViewById(R.id.et);
+        handler.postDelayed(r, 10000);
     }
+    
+    Handler handler = new Handler();
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            Log.e(TAG, "NormalActivity.Runnable()"+NormalActivity.this.toString());
+            handler.postDelayed(r, 10000);
+        }
+    };
 
     private ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -99,13 +114,22 @@ public class NormalActivity extends Activity implements View.OnClickListener{
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Log.e(TAG, "NormalActivity.onSaveInstanceState()");
+        String etStr = et.getText().toString();
+        outState.putString("input", etStr);
+        Log.e(TAG, "NormalActivity.onSaveInstanceState()：" + etStr);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         Log.e(TAG, "NormalActivity.onRestoreInstanceState()");
+        if(et != null){
+            Object o = savedInstanceState.get("input");
+            if(o != null){
+                String etStr = o.toString();
+                et.setText(etStr);
+            }
+        }
         super.onRestoreInstanceState(savedInstanceState);
     }
 

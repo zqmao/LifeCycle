@@ -33,11 +33,16 @@ public class MainActivity extends AppCompatActivity {
                 openActivity(LaunchTestActivity.class);
             }
         });
+        findViewById(R.id.tv4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(AdjustTestActivity.class);
+            }
+        });
     }
     
     private void openActivity(Class clazz){
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
-        intent.setClassName("packageName", "className");
     }
 }

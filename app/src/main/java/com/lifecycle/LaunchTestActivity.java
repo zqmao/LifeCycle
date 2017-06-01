@@ -2,6 +2,8 @@ package com.lifecycle;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -26,6 +28,21 @@ public class LaunchTestActivity extends Activity  implements View.OnClickListene
         textView = (TextView)findViewById(R.id.tv);
         String text = this.getTaskId() + "   " + this.toString();
         textView.setText(text);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                switchScreen();
+            }
+        });
+    }
+
+    private void switchScreen(){
+        if(MainActivity.screen){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }else{
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        MainActivity.screen = !MainActivity.screen;
     }
 
     @Override
@@ -56,5 +73,11 @@ public class LaunchTestActivity extends Activity  implements View.OnClickListene
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.e("LifeCycle", "LaunchTestActivity.onActivityResult");
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.e("LifeCycle", "LaunchTestActivity.onConfigurationChanged");
+        super.onConfigurationChanged(newConfig);
     }
 }

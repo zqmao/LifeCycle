@@ -14,6 +14,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 /**
  * Created by Administrator on 2017/5/27.
@@ -21,6 +24,7 @@ import android.view.View;
 
 public class LifeCycleActivity extends Activity implements View.OnClickListener{
     private final String TAG = "LifeCycle";
+    private EditText et;
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class LifeCycleActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.f).setOnClickListener(this);
         findViewById(R.id.g).setOnClickListener(this);
         findViewById(R.id.h).setOnClickListener(this);
+        et = (EditText)findViewById(R.id.et);
     }
     
     private ServiceConnection connection = new ServiceConnection() {
@@ -113,6 +118,17 @@ public class LifeCycleActivity extends Activity implements View.OnClickListener{
     public void onConfigurationChanged(Configuration newConfig) {
         Log.e(TAG, "LifeCycleActivity.onConfigurationChanged()");
         super.onConfigurationChanged(newConfig);
+        if(et == null){
+            return;
+        }
+        ViewGroup.LayoutParams params = et.getLayoutParams();
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            params.width = 1000;
+            et.setLayoutParams(params);
+        }else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            params.width = 400;
+            et.setLayoutParams(params);
+        }
     }
 
     @Override

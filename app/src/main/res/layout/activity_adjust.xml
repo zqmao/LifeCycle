@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:text="测试打开模式页面"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        
         <TextView
             android:id="@+id/a"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:text="standard"
+            android:text="滚动+adjustpan"
             android:gravity="center"/>
 
         <TextView
@@ -27,43 +21,29 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:text="singleTop"
+            android:text="无滚动+adjustpan"
             android:gravity="center"/>
     </LinearLayout>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/c"
             android:layout_width="0dp"
-            android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="singleTask" />
+            android:layout_height="50dp"
+            android:text="滚动+adjustresize"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/d"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:text="singleInstance"
+            android:text="无滚动+adjustresize"
             android:gravity="center"/>
-
+        
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="展示页面属性"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:text="展示页面属性"
-        />
 
 </LinearLayout>
