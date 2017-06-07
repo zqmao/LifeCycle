@@ -3,6 +3,7 @@ package com.lifecycle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,10 +40,28 @@ public class MainActivity extends AppCompatActivity {
                 openActivity(AdjustTestActivity.class);
             }
         });
+        findViewById(R.id.tv5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity(PortraitActivityA.class);
+            }
+        });
     }
     
     private void openActivity(Class clazz){
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.e("onDestroy", "MainActivity.onDestroy");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.e("onPause", "MainActivity.onPause");
+        super.onPause();
     }
 }

@@ -75,6 +75,29 @@
         <activity 
             android:name=".AdjustTestActivity"
             />
+        
+        <activity
+            android:name=".PortraitActivityA"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".PortraitActivityB"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            />
+        <activity
+            android:name=".LandScapeActivityC"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent"
+            />
     </application>
 
 </manifest>
