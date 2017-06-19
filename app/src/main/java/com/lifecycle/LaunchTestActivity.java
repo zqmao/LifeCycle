@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 
 public class LaunchTestActivity extends Activity  implements View.OnClickListener{
-    private TextView textView;
+    protected TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class LaunchTestActivity extends Activity  implements View.OnClickListene
         setContentView(R.layout.activity_test);
         findViewById(R.id.a).setOnClickListener(this);
         findViewById(R.id.b).setOnClickListener(this);
+        findViewById(R.id.b2).setOnClickListener(this);
         findViewById(R.id.c).setOnClickListener(this);
         findViewById(R.id.d).setOnClickListener(this);
         textView = (TextView)findViewById(R.id.tv);
@@ -55,6 +56,9 @@ public class LaunchTestActivity extends Activity  implements View.OnClickListene
             case R.id.b:
                 openActivity(LaunchTestB.class);
                 break;
+            case R.id.b2:
+                openActivity(LaunchTestB2.class);
+                break;
             case R.id.c:
                 openActivity(LaunchTestC.class);
                 break;
@@ -66,7 +70,7 @@ public class LaunchTestActivity extends Activity  implements View.OnClickListene
     
     private void openActivity(Class clazz){
         Intent intent = new Intent(this, clazz);
-        startActivityForResult(intent, 0);
+        startActivity(intent);
     }
 
     @Override
